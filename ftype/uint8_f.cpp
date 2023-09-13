@@ -87,159 +87,178 @@ uint8_f uint8_f::bit_length() const {
 	return std::numeric_limits<std::uint8_t>::digits;
 };
 
-
-template<typename type_value>
-uint8_f uint8_f::__mul__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value * value);
-	if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value * static_cast<int>(value));
-	if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value * value.number());
-};
-
-template<typename type_value>
-uint8_f uint8_f::__div__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value / value);
-	if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value / static_cast<int>(value));
-	if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value / value.number());
-};
-
-template<typename type_value>
-uint8_f uint8_f::__mod__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value % value);
-	if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value % static_cast<int>(value));
-	if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value % value.number());
-};
-
-template<typename type_value>
-uint8_f uint8_f::__rmod__(type_value value) {
-	return this->__mod__<type_value>(value);
-};
-
-std::string uint8_f::repr() const {
-	return std::to_string(this->value);
-};
-
-template<typename type_value>
-bool uint8_f::__eq__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return this->value == value;
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return this->value == static_cast<int>(value);
-	else if (typeid(value) == typeid(uint8_f))
-		return this->value == value.number();
-	else
-		return false;
-};
-
-template<typename type_value>
-bool uint8_f::__ne__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return this->value != value;
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return this->value != static_cast<int>(value);
-	else if (typeid(value) == typeid(uint8_f))
-		return this->value != value.number();
-	else
-		return true;
-};
-
-template<typename type_value>
-bool uint8_f::__lt__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return this->value < value;
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return this->value < static_cast<int>(value);
-	else if (typeid(value) == typeid(uint8_f))
-		return this->value < value.number();
-	else
-		return false;
-};
-
-template<typename type_value>
-bool uint8_f::__gt__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return this->value > value;
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return this->value > static_cast<int>(value);
-	else if (typeid(value) == typeid(uint8_f))
-		return this->value > value.number();
-	else
-		return false;
-};
-
-template<typename type_value>
-uint8_f uint8_f::__and__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value & value);
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value & static_cast<int>(value));
-	else if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value & value.number());
-	else
-		throw std::runtime_error("It is impossible to apply to these types of data &");
-};
-
-template<typename type_value>
-uint8_f uint8_f::__or__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value | value);
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value | static_cast<int>(value));
-	else if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value | value.number());
-	else
-		throw std::runtime_error("It is impossible to apply to these types of data |");
-};
-
-template<typename type_value>
-uint8_f uint8_f::__xor__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value ^ value);
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value ^ static_cast<int>(value));
-	else if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value ^ value.number());
-	else
-		throw std::runtime_error("It is impossible to apply to these types of data |");
-};
-
-template<typename type_value>
-uint8_f uint8_f::__lshift__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value << value);
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value << static_cast<int>(value));
-	else if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value << value.number());
-	else
-		throw std::runtime_error("It is impossible to apply to these types of data <<");
-};
-
-template<typename type_value>
-uint8_f uint8_f::__rshift__(type_value value) {
-	if (typeid(value) == typeid(int))
-		return uint8_f(this->value >> value);
-	else if ((typeid(value) == typeid(float)) || (typeid(value) == typeid(double)))
-		return uint8_f(this->value >> static_cast<int>(value));
-	else if (typeid(value) == typeid(uint8_f))
-		return uint8_f(this->value >> value.number());
-	else
-		throw std::runtime_error("It is impossible to apply to these types of data <<");
-};
-
-uint8_f uint8_f::__invert__() {
+uint8_f uint8_f::operator+(int other) const {
+	return uint8_f(this->value + other);
+}
+uint8_f uint8_f::operator+(float other) const {
+	return uint8_f(this->value + static_cast<int>(other));
+}
+uint8_f uint8_f::operator+(double other) const {
+	return uint8_f(this->value + static_cast<int>(other));
+}
+uint8_f uint8_f::operator+(const uint8_f& other) const {
+	return uint8_f(this->value + other.number());
+}
+uint8_f uint8_f::operator-(int other) const {
+	return uint8_f(this->value - other);
+}
+uint8_f uint8_f::operator-(float other) const {
+	return uint8_f(this->value - static_cast<int>(other));
+}
+uint8_f uint8_f::operator-(double other) const {
+	return uint8_f(this->value - static_cast<int>(other));
+}
+uint8_f uint8_f::operator-(const uint8_f& other) const {
+	return uint8_f(this->value - other.number());
+}
+uint8_f uint8_f::operator*(int other) const{
+		return uint8_f(this->value * other);
+}
+uint8_f uint8_f::operator*(float other) const{
+	return uint8_f(this->value * static_cast<int>(other));
+}
+uint8_f uint8_f::operator*(double other) const{
+	return uint8_f(this->value * static_cast<int>(other));
+}
+uint8_f uint8_f::operator*(const uint8_f& other) const{
+	return uint8_f(this->value * other.number());
+}
+uint8_f uint8_f::operator/(int other) const{
+	return uint8_f(this->value / other);
+}
+uint8_f uint8_f::operator/(float other) const{
+	return uint8_f(this->value / static_cast<int>(other));
+}
+uint8_f uint8_f::operator/(double other) const{
+	return uint8_f(this->value / static_cast<int>(other));
+}
+uint8_f uint8_f::operator/(const uint8_f& other) const{
+	return uint8_f(this->value / other.number());
+}
+uint8_f uint8_f::operator%(int other) const{
+	return uint8_f(this->value % other);
+}
+uint8_f uint8_f::operator%(float other) const{
+	return uint8_f(this->value % static_cast<int>(other));
+}
+uint8_f uint8_f::operator%(double other) const{
+	return uint8_f(this->value % static_cast<int>(other));
+}
+uint8_f uint8_f::operator%(const uint8_f& other) const{
+	return uint8_f(this->value % other.number());
+}
+bool uint8_f::operator==(int other) const{
+	return this->value == other;
+}
+bool uint8_f::operator==(float other) const{
+	return this->value == static_cast<int>(other);
+}
+bool uint8_f::operator==(double other) const{
+	return this->value == static_cast<int>(other);
+}
+bool uint8_f::operator==(const uint8_f& other) const{
+	return this->value == other.number();
+}
+bool uint8_f::operator!=(int other) const{
+	return this->value != other;
+}
+bool uint8_f::operator!=(float other) const{
+	return this->value != static_cast<int>(other);
+}
+bool uint8_f::operator!=(double other) const{
+	return this->value != static_cast<int>(other);
+}
+bool uint8_f::operator!=(const uint8_f& other) const{
+	return this->value != other.number();
+}
+bool uint8_f::operator<(int other) const{
+	return this->value < other;
+}
+bool uint8_f::operator<(float other) const{
+	return this->value < static_cast<int>(other);
+}
+bool uint8_f::operator<(double other) const{
+	return this->value < static_cast<int>(other);
+}
+bool uint8_f::operator<(const uint8_f& other) const{
+	return this->value < other.number();
+}
+bool uint8_f::operator>(int other) const{
+	return this->value > other;
+}
+bool uint8_f::operator>(float other) const{
+	return this->value > static_cast<int>(other);
+}
+bool uint8_f::operator>(double other) const{
+	return this->value > static_cast<int>(other);
+}
+bool uint8_f::operator>(const uint8_f& other) const{
+	return this->value > other.number();
+}
+uint8_f uint8_f::operator&(int other) const{
+	return uint8_f(this->value & other);
+}
+uint8_f uint8_f::operator&(float other) const{
+	return uint8_f(this->value & static_cast<int>(other));
+}
+uint8_f uint8_f::operator&(double other) const{
+	return uint8_f(this->value & static_cast<int>(other));
+}
+uint8_f uint8_f::operator&(const uint8_f& other) const{
+	return uint8_f(this->value & other.number());
+}
+uint8_f uint8_f::operator|(int other) const{
+	return uint8_f(this->value | other);
+}
+uint8_f uint8_f::operator|(float other) const{
+	return uint8_f(this->value | static_cast<int>(other));
+}
+uint8_f uint8_f::operator|(double other) const{
+	return uint8_f(this->value | static_cast<int>(other));
+}
+uint8_f uint8_f::operator|(const uint8_f& other) const{
+	return uint8_f(this->value | other.number());
+}
+uint8_f uint8_f::operator^(int other) const{
+	return uint8_f(this->value ^ other);
+}
+uint8_f uint8_f::operator^(float other) const{
+	return uint8_f(this->value ^ static_cast<int>(other));
+}
+uint8_f uint8_f::operator^(double other) const{
+	return uint8_f(this->value ^ static_cast<int>(other));
+}
+uint8_f uint8_f::operator^(const uint8_f& other) const{
+	return uint8_f(this->value ^ other.number());
+}
+uint8_f uint8_f::operator<<(int other) const{
+	return uint8_f(this->value << other);
+}
+uint8_f uint8_f::operator<<(float other) const{
+	return uint8_f(this->value << static_cast<int>(other));
+}
+uint8_f uint8_f::operator<<(double other) const{
+	return uint8_f(this->value << static_cast<int>(other));
+}
+uint8_f uint8_f::operator<<(const uint8_f& other) const{
+	return uint8_f(this->value << other.number());
+}
+uint8_f uint8_f::operator<<(int other) const{
+	return uint8_f(this->value << other);
+}
+uint8_f uint8_f::operator>>(float other) const{
+	return uint8_f(this->value >> static_cast<int>(other));
+}
+uint8_f uint8_f::operator>>(double other) const{
+	return uint8_f(this->value >> static_cast<int>(other));
+}
+uint8_f uint8_f::operator>>(const uint8_f& other) const{
+	return uint8_f(this->value >> other.number());
+}
+uint8_f uint8_f::operator~() const {
 	return uint8_f(~this->value);
 };
-template<typename type_value>
-uint8_f uint8_f::__pow__(type_value value) {
+uint8_f uint8_f::pow(int value) {
 	if ((typeid(value) != typeid(int)))
 	{
 		throw std::runtime_error("Value must be integer");
@@ -252,6 +271,24 @@ uint8_f uint8_f::__pow__(type_value value) {
 	do {
 		prevGuess = guess;
 		guess = (guess + value / guess) / 2;
+	} while (guess != prevGuess);
+
+	return uint8_f(guess);
+
+};
+uint8_f uint8_f::pow(const uint8_f& value) {
+	if ((typeid(value) != typeid(const uint8_f&)))
+	{
+		throw std::runtime_error("Value must be integer");
+	}
+	if ( value.number() == 0 || value.number() == 1) {
+		return uint8_f(value.number());
+	}
+	uint8_t guess(value.number() / 2);
+	uint8_t prevGuess;
+	do {
+		prevGuess = guess;
+		guess = (guess + value.number() / guess) / 2;
 	} while (guess != prevGuess);
 
 	return uint8_f(guess);
