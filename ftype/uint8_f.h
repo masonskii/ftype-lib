@@ -29,86 +29,66 @@ public:
 	std::string binary() const;
 	uint8_f conjugate() const;
 	uint8_f bit_length() const;
-
-	uint8_f __add__(int value);
-	uint8_f __add__(float value);
-	uint8_f __add__(double value);
-	uint8_f __add__(const uint8_f& value);
-	uint8_f __sub__(int value);
-	uint8_f __sub__(float value);
-	uint8_f __sub__(double value);
-	uint8_f __sub__(const uint8_f& value);
-
-	template<typename type_value>
-	uint8_f __mul__(type_value value);
-	
-	template<typename type_value>
-	uint8_f __div__(type_value value);
-
-	template<typename type_value>
-	uint8_f __mod__(type_value value);
-
-	template<typename type_value>
-	uint8_f __rmod__(type_value value);
-
-	std::string repr() const;
-
-	template<typename type_value>
-	bool __eq__(type_value value);
-
-	template<typename type_value>
-	bool __ne__(type_value value);
-
-	template<typename type_value>
-	bool __lt__(type_value value);
-
-	template<typename type_value>
-	bool __gt__(type_value value);
-
-	template<typename type_value>
-	uint8_f __and__(type_value value);
-
-	template<typename type_value>
-	uint8_f __or__(type_value value);
-
-	template<typename type_value>
-	uint8_f __xor__(type_value value);
-
-	template<typename type_value>
-	uint8_f __lshift__(type_value value);
-
-	template<typename type_value>
-	uint8_f __rshift__(type_value value);
-
-	uint8_f __invert__();
-	template<typename type_value>
-	uint8_f __pow__(type_value value);
-
-
-	uint8_f operator+(int other) const {
-		return uint8_f(value + other);
-	}
-	uint8_f operator+(float other) const {
-		return uint8_f(value + static_cast<int>(other));
-	}
-	uint8_f operator+(double other) const {
-		return uint8_f(value + static_cast<int>(other));
-	}
-	uint8_f operator+(const uint8_f& other) const {
-		return uint8_f(value + other.value);
-	}
-	uint8_f operator-(int other) const {
-		return uint8_f(value - other);
-	}
-	uint8_f operator-(float other) const {
-		return uint8_f(value - static_cast<int>(other));
-	}
-	uint8_f operator-(double other) const {
-		return uint8_f(value - static_cast<int>(other));
-	}
-	uint8_f operator-(const uint8_f& other) const {
-		return uint8_f(value - other.value);
-	}
+	std::string uint8_f::repr() const;
+	uint8_f uint8_f::pow(int value);
+	uint8_f uint8_f::pow(const uint8_f& value);
+	uint8_f operator+(int other) const;
+	uint8_f operator+(float other) const;
+	uint8_f operator+(double other) const;
+	uint8_f operator+(const uint8_f& other) const;
+	uint8_f operator-(int other) const;
+	uint8_f operator-(float other) const;
+	uint8_f operator-(double other) const;
+	uint8_f operator-(const uint8_f& other) const;
+	uint8_f operator*(int other) const;
+	uint8_f operator*(float other) const;
+	uint8_f operator*(double other) const;
+	uint8_f operator*(const uint8_f& other) const;
+	uint8_f operator/(int other) const;
+	uint8_f operator/(float other) const;
+	uint8_f operator/(double other) const;
+	uint8_f operator/(const uint8_f& other) const;
+	uint8_f operator%(int other) const;
+	uint8_f operator%(float other) const;
+	uint8_f operator%(double other) const;
+	uint8_f operator%(const uint8_f& other) const;
+	bool operator==(int other) const;
+	bool operator==(float other) const;
+	bool operator==(double other) const;
+	bool operator==(const uint8_f& other) const;
+	bool operator!=(int other) const;
+	bool operator!=(float other) const;
+	bool operator!=(double other) const;
+	bool operator!=(const uint8_f& other) const;
+	bool operator<(int other) const;
+	bool operator<(float other) const;
+	bool operator<(double other) const;
+	bool operator<(const uint8_f& other) const;
+	bool operator>(int other) const;
+	bool operator>(float other) const;
+	bool operator>(double other) const;
+	bool operator>(const uint8_f& other) const;
+	uint8_f operator&(int other) const;
+	uint8_f operator&(float other) const;
+	uint8_f operator&(double other) const;
+	uint8_f operator&(const uint8_f& other) const;
+	uint8_f operator|(int other) const;
+	uint8_f operator|(float other) const;
+	uint8_f operator|(double other) const;
+	uint8_f operator|(const uint8_f& other) const;
+	uint8_f operator^(int other) const;
+	uint8_f operator^(float other) const;
+	uint8_f operator^(double other) const;
+	uint8_f operator^(const uint8_f& other) const;
+	uint8_f operator<<(int other) const;
+	uint8_f operator<<(float other) const;
+	uint8_f operator<<(double other) const;
+	uint8_f operator<<(const uint8_f& other) const;
+	uint8_f operator>>(int other) const;
+	uint8_f operator>>(float other) const;
+	uint8_f operator>>(double other) const;
+	uint8_f operator>>(const uint8_f& other) const;
+	uint8_f operator~() const;
 private:
 	std::uint8_t value;
 };
