@@ -1,0 +1,5 @@
+./bin
+./venv
+./idea
+./vscode
+./.env
