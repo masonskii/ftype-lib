@@ -1,0 +1,25 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: mingw64.exe сборка активного файла",
+            "command": "c:\\msys64\\mingw64.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "c:\\msys64"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "Задача создана отладчиком."
+        }
+    ],
+    "version": "2.0.0"
+}
